@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: postgres
+  password: docker
+  port: 5433
+
+development:
+  <<: *default
+  database: recharge_development
+
+test:
+  <<: *default
+  database: recharge_test
+
+production:
+  <<: *default
+  database: recharge_production
+  username: recharge
+  password: <%= ENV['RECHARGE_DATABASE_PASSWORD'] %>
