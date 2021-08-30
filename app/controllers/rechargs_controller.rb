@@ -18,7 +18,7 @@ class RechargsController < ApplicationController
     @recharg = Recharg.new(recharg_params)
 
     if @recharg.save
-      render json: @recharg, status: :created, location: @recharg
+      render json: @recharg, status: :created, location: @recharg, include: :phone
     else
       render json: @recharg.errors, status: :unprocessable_entity
     end
